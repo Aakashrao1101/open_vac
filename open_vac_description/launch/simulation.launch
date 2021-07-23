@@ -1,0 +1,8 @@
+<launch>
+  <arg default="$(find open_vac_description)/launch/navigation.rviz" name="rviz_i"/>
+
+  <include file="$(find open_vac_description)/launch/gazebo.launch"/>
+  <include file="$(find open_vac_description)/launch/display.launch">
+    <arg name="rvizconfig" value="$(arg rviz_i)"/>
+  </include>
+</launch>

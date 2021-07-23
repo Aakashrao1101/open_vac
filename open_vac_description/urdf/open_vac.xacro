@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<robot name="open_vac" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find open_vac_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find open_vac_description)/urdf/open_vac.trans" />
+<xacro:include filename="$(find open_vac_description)/urdf/open_vac.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.023056809904124308 0.019729380607707746 0.06490672418896756"/>
+    <mass value="1.8502581137350895"/>
+    <inertia ixx="0.033506" ixy="-0.0" ixz="-5.2e-05" iyy="0.029597" iyz="-0.0" izz="0.057752"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/base_link.stl" scale="1 1 1"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/base_link.stl" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.235604856017705e-07 3.837654570064408e-07 -0.009826544321230108"/>
+    <mass value="0.016427387985621034"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.193219 -0.019729 -0.012801"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/caster_1.stl" scale="1 1 1"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.193219 -0.019729 -0.012801"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/caster_1.stl" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_link_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0011356530900377138 5.333737735126187e-07 0.014923008896609899"/>
+    <mass value="0.07613490631013946"/>
+    <inertia ixx="3.7e-05" ixy="-0.0" ixz="-0.0" iyy="3.5e-05" iyz="0.0" izz="6.4e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.162243 -0.019729 -0.114101"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/lidar_link_1.stl" scale="1 1 1"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.162243 -0.019729 -0.114101"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/lidar_link_1.stl" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.2298898844086423e-07 -0.009999621889384247 4.123690382634715e-07"/>
+    <mass value="0.14555640131217312"/>
+    <inertia ixx="9.6e-05" ixy="0.0" ixz="0.0" iyy="0.000183" iyz="0.0" izz="9.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.047757 0.126271 -0.039934"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/wheel_right_1.stl" scale="1 1 1"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.047757 0.126271 -0.039934"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/wheel_right_1.stl" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.2298898851719207e-07 0.010000382461754775 4.1236903833286043e-07"/>
+    <mass value="0.14555640131217312"/>
+    <inertia ixx="9.6e-05" ixy="0.0" ixz="0.0" iyy="0.000183" iyz="0.0" izz="9.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.047757 -0.165729 -0.039934"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/wheel_left_1.stl" scale="1 1 1"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.047757 -0.165729 -0.039934"/>
+    <geometry>
+      <mesh filename="package://open_vac_description/meshes/wheel_left_1.stl" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="caster_jnt" type="fixed">
+  <origin rpy="0 0 0" xyz="0.193219 0.019729 0.012801"/>
+  <parent link="base_link"/>
+  <child link="caster_1"/>
+</joint>
+
+<joint name="lidar_jnt" type="fixed">
+  <origin rpy="0 0 0" xyz="0.162243 0.019729 0.124101"/>
+  <parent link="base_link"/>
+  <child link="lidar_link_1"/>
+</joint>
+
+<joint name="right_wheel_jnt" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.047757 -0.126271 0.039934"/>
+  <parent link="base_link"/>
+  <child link="wheel_right_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_jnt" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.047757 0.165729 0.039934"/>
+  <parent link="base_link"/>
+  <child link="wheel_left_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+</robot>

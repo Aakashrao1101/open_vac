@@ -1,0 +1,9 @@
+<launch>
+  
+  <!-- Start simulation env -->
+  <include file="$(find open_vac_description)/launch/simulation.launch" />
+
+  <!-- start the move_base and run amcl node -->
+  <include file="$(find open_vac_navigation)/launch/move_base.launch" />
+
+</launch>
