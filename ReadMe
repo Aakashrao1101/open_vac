@@ -1,1 +1,9 @@
-https://medium.com/cse-468-568-robotic-algorithms/robot-vacuum-cleaner-part-3-3-2bc317cf17db
+This is still in development.
+Navigation stack setup and simulation setup done.
+
+Goals of the project:
+1. Home cleaning.
+2. Sturdy yet user-friendly and harmless design.
+3. Dodge the obstacles and safely maneuver around it.
+4. Remote control ability for manual operation.
+5. Open source it.
